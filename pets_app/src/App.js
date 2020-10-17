@@ -3,6 +3,7 @@ import Login from "./components/AddPet";
 import MainScreen from "./components/MainScreen";
 import swal from "sweetalert";
 import "./App.css";
+import { PetsProvider } from "./PetsContext";
 
 const App = () => {
   const [name, setName] = useState("");
@@ -63,7 +64,11 @@ const App = () => {
   return (
     <div className="App">
       {mainPage ? (
-        <MainScreen handlePetsAddPage={handlePetsAddPage} />
+        <>
+          <PetsProvider value = {window.localStorage.length}>
+            <MainScreen handlePetsAddPage={handlePetsAddPage} />
+          </PetsProvider>
+        </>
       ) : (
         <Login
           name={name}
