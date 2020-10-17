@@ -1,14 +1,19 @@
 import React from "react";
 import List from "../components/List";
-const MainScreen = ({handlePetsAddPage}) => {
+import { PetsConsumer } from "../PetsContext";
+const MainScreen = ({ handlePetsAddPage }) => {
   return (
     <section className="mainScreen">
       <nav>
         <h2>Vet App</h2>
         <button onClick={handlePetsAddPage}>Add Pet</button>
       </nav>
-      <h2 className = "mainTitle">Registered Pets</h2>
-      <List/>
+      <PetsConsumer>
+        {(numRegisteredPets) => {
+          return <h2 className="mainTitle">Registered Pets: {numRegisteredPets}</h2>;
+        }}
+      </PetsConsumer>
+      <List />
     </section>
   );
 };
