@@ -58,7 +58,7 @@ const AddPet = (props) => {
             value = {petType}
             onChange={(e) => setPetType(e.target.value)}
           >
-            <option value = "" defaultValue>
+            <option value = "" defaultValue disabled>
               Select an option
             </option>
             <option value="Dog">Dog</option>
